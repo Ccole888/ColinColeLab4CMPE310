@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern unsigned char ram[];
-extern void sum(int size);
+extern unsigned int ram[];
+extern int sum(int size);
 
-int main(){
-    FILE *file = fopen("data.txt", "r");
+int main(int argc, char* argv[]){
+    FILE *file = fopen(argv[1], "r");
     int size;
     fscanf(file, "%d", &size);
     int intlist[size];
@@ -18,8 +18,8 @@ int main(){
     for(int i = 0; i < size; i++){
         ram[i] = intlist[i];
     }
-    sum(size);
-    unsigned int result = *(unsigned int*)&ram[0x51];
+    
+    unsigned int result = sum(size);
     printf("Sum: %u\n", result);
     printf("Size: %d\n", size);
 }
