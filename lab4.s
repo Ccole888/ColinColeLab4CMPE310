@@ -1,5 +1,5 @@
 .section .bss
-    .lcomm ram, 256
+    .lcomm ram, 4096
     .global ram
 
 .section .text
